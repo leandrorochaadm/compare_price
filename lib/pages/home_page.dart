@@ -9,11 +9,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final resultProd1 = 'O preço do produto 1 é mais vantajoso';
+  final resultProd2 = 'O preço do produto 2 é mais vantajoso';
+
   final formKey = GlobalKey<FormState>();
   final TEPrice1 = TextEditingController();
   final TEQuant1 = TextEditingController();
   final TEPrice2 = TextEditingController();
   final TEQuant2 = TextEditingController();
+  String result = '';
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +47,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   const SizedBox(height: 12),
                   TextFormField(
+                    controller: TEQuant1,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'Quantidade',
@@ -57,6 +62,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   const SizedBox(height: 12),
                   TextFormField(
+                    controller: TEPrice1,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'Preço',
@@ -79,6 +85,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   const SizedBox(height: 12),
                   TextFormField(
+                    controller: TEQuant2,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'Quantidade',
@@ -93,6 +100,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   const SizedBox(height: 12),
                   TextFormField(
+                    controller: TEPrice2,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'Preço',
@@ -108,9 +116,20 @@ class _HomePageState extends State<HomePage> {
                   const SizedBox(height: 12),
                   FilledButton(
                     onPressed: () {
+                      result = '';
                       final isValid = formKey.currentState?.validate() ?? false;
                       if (isValid) {
-                        print('valid');
+                        final prod1 = double.parse(TEPrice1.value.text) /
+                            double.parse(TEQuant1.value.text);
+                        final prod2 = double.parse(TEPrice2.value.text) /
+                            double.parse(TEQuant2.value.text);
+                        final resultIsProd1 = prod1 < prod2;
+                        if (resultIsProd1) {
+                          result = resultProd1;
+                        } else {
+                          result = resultProd2;
+                        }
+                        setState(() {});
                       }
                     },
                     child: const Text(
@@ -120,12 +139,15 @@ class _HomePageState extends State<HomePage> {
                   ),
                   const SizedBox(height: 12),
                   const SizedBox(height: 12),
-                  const Text(
-                    'O preço do produto 1 é mais vantajoso',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.green,
+                  Visibility(
+                    visible: result.isNotEmpty || result != '',
+                    child: const Text(
+                      'O preço do produto 1 é mais vantajoso',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.green,
+                      ),
                     ),
                   ),
                 ],

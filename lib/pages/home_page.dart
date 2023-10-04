@@ -138,12 +138,11 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   const SizedBox(height: 12),
-                  const SizedBox(height: 12),
                   Visibility(
                     visible: result.isNotEmpty || result != '',
-                    child: const Text(
-                      'O preço do produto 1 é mais vantajoso',
-                      style: TextStyle(
+                    child: Text(
+                      result,
+                      style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: Colors.green,

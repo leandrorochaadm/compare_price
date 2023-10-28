@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 
 class ProductModel extends Equatable {
-  final int quantity;
-  final int price;
+  final double quantity;
+  final double price;
 
   const ProductModel({required this.quantity, required this.price});
 
@@ -11,8 +11,8 @@ class ProductModel extends Equatable {
     required String price,
   }) =>
       ProductModel(
-        quantity: int.parse(quantity),
-        price: int.parse(price),
+        quantity: double.parse(quantity),
+        price: double.parse(price),
       );
 
   factory ProductModel.empty() => const ProductModel(quantity: 0, price: 0);

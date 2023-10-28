@@ -13,10 +13,10 @@ class _HomePageState extends State<HomePage> {
   final resultProd2 = 'O preço do produto 2 é mais vantajoso';
 
   final formKey = GlobalKey<FormState>();
-  final TEPrice1 = TextEditingController();
-  final TEQuant1 = TextEditingController();
-  final TEPrice2 = TextEditingController();
-  final TEQuant2 = TextEditingController();
+  final tePrice1 = TextEditingController();
+  final teQuant1 = TextEditingController();
+  final tePrice2 = TextEditingController();
+  final teQuant2 = TextEditingController();
   String result = '';
 
   @override
@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   const SizedBox(height: 12),
                   TextFormField(
-                    controller: TEQuant1,
+                    controller: teQuant1,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'Quantidade',
@@ -57,12 +57,15 @@ class _HomePageState extends State<HomePage> {
                     validator: Validatorless.multiple([
                       Validatorless.required('Campo obrigatório'),
                       Validatorless.numbersBetweenInterval(
-                          1, 1000000, 'Quantidade deve ser maior que zero'),
+                        1,
+                        1000000,
+                        'Quantidade deve ser maior que zero',
+                      ),
                     ]),
                   ),
                   const SizedBox(height: 12),
                   TextFormField(
-                    controller: TEPrice1,
+                    controller: tePrice1,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'Preço',
@@ -72,7 +75,10 @@ class _HomePageState extends State<HomePage> {
                     validator: Validatorless.multiple([
                       Validatorless.required('Campo obrigatório'),
                       Validatorless.numbersBetweenInterval(
-                          1, 1000000, 'Preço deve ser maior que zero'),
+                        1,
+                        1000000,
+                        'Preço deve ser maior que zero',
+                      ),
                     ]),
                   ),
                   const SizedBox(height: 12),
@@ -85,7 +91,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   const SizedBox(height: 12),
                   TextFormField(
-                    controller: TEQuant2,
+                    controller: teQuant2,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'Quantidade',
@@ -95,12 +101,15 @@ class _HomePageState extends State<HomePage> {
                     validator: Validatorless.multiple([
                       Validatorless.required('Campo obrigatório'),
                       Validatorless.numbersBetweenInterval(
-                          1, 1000000, 'Quantidade deve ser maior que zero'),
+                        1,
+                        1000000,
+                        'Quantidade deve ser maior que zero',
+                      ),
                     ]),
                   ),
                   const SizedBox(height: 12),
                   TextFormField(
-                    controller: TEPrice2,
+                    controller: tePrice2,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'Preço',
@@ -110,7 +119,10 @@ class _HomePageState extends State<HomePage> {
                     validator: Validatorless.multiple([
                       Validatorless.required('Campo obrigatório'),
                       Validatorless.numbersBetweenInterval(
-                          1, 1000000, 'Preço deve ser maior que zero'),
+                        1,
+                        1000000,
+                        'Preço deve ser maior que zero',
+                      ),
                     ]),
                   ),
                   const SizedBox(height: 12),
@@ -119,10 +131,10 @@ class _HomePageState extends State<HomePage> {
                       result = '';
                       final isValid = formKey.currentState?.validate() ?? false;
                       if (isValid) {
-                        final prod1 = double.parse(TEPrice1.value.text) /
-                            double.parse(TEQuant1.value.text);
-                        final prod2 = double.parse(TEPrice2.value.text) /
-                            double.parse(TEQuant2.value.text);
+                        final prod1 = double.parse(tePrice1.value.text) /
+                            double.parse(teQuant1.value.text);
+                        final prod2 = double.parse(tePrice2.value.text) /
+                            double.parse(teQuant2.value.text);
                         final resultIsProd1 = prod1 < prod2;
                         if (resultIsProd1) {
                           result = resultProd1;

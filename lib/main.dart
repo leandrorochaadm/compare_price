@@ -1,4 +1,4 @@
-import 'package:compare_prices/pages/home_page.dart';
+import 'pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:validatorless/validatorless.dart';
 
+import '../model/product_model.dart';
+import 'home_controller.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -9,8 +12,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final resultProd1 = 'O preço do produto 1 é mais vantajoso';
-  final resultProd2 = 'O preço do produto 2 é mais vantajoso';
+  final controller = HomeController();
 
   final formKey = GlobalKey<FormState>();
   final tePrice1 = TextEditingController();
@@ -131,16 +133,14 @@ class _HomePageState extends State<HomePage> {
                       result = '';
                       final isValid = formKey.currentState?.validate() ?? false;
                       if (isValid) {
-                        final prod1 = double.parse(tePrice1.value.text) /
-                            double.parse(teQuant1.value.text);
-                        final prod2 = double.parse(tePrice2.value.text) /
-                            double.parse(teQuant2.value.text);
-                        final resultIsProd1 = prod1 < prod2;
-                        if (resultIsProd1) {
-                          result = resultProd1;
-                        } else {
-                          result = resultProd2;
-                        }
+                        controller.product1 = ProductModel.fromString(
+                          quantity: teQuant1.text,
+                          price: tePrice1.text,
+                        );
+                        controller.product2 = ProductModel.fromString(
+                          quantity: teQuant2.text,
+                          price: tePrice2.text,
+                        );
                         setState(() {});
                       }
                     },
@@ -151,9 +151,9 @@ class _HomePageState extends State<HomePage> {
                   ),
                   const SizedBox(height: 12),
                   Visibility(
-                    visible: result.isNotEmpty || result != '',
+                    visible: controller.isValid,
                     child: Text(
-                      result,
+                      controller.productAdvantageous,
                       style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,

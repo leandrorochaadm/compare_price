@@ -15,11 +15,11 @@ class HomeController {
     if (product1.valueUnitary < product2.valueUnitary) {
       final proportion = product1.valueUnitary / product2.valueUnitary;
       final percentil = (1 - proportion) * 100;
-      return 'O $product1Name é ${percentil.toStringAsFixed(1)} mais barato que o $product2Name';
+      return 'O $product1Name é ${percentil.toStringAsFixed(1)}% mais barato que o $product2Name';
     } else {
       final proportion = product2.valueUnitary / product1.valueUnitary;
       final percentil = (1 - proportion) * 100;
-      return 'O $product2Name é ${percentil.toStringAsFixed(1)} mais barato que o $product1Name';
+      return 'O $product2Name é ${percentil.toStringAsFixed(1)}% mais barato que o $product1Name';
     }
   }
 }

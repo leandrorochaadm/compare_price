@@ -7,7 +7,11 @@ class HomeController {
   static const product1Name = 'produto 1';
   static const product2Name = 'produto 2';
 
+  bool get isValid => product1.isValid && product2.isValid;
+
   String get productAdvantageous {
+    if (!isValid) return '';
+
     if (product1.valueUnitary < product2.valueUnitary) {
       final proportion = product1.valueUnitary / product2.valueUnitary;
       final percentil = (1 - proportion) * 100;

@@ -17,6 +17,8 @@ class ProductModel extends Equatable {
 
   factory ProductModel.empty() => const ProductModel(quantity: 0, price: 0);
 
+  bool get isValid => price > 0 && quantity > 0;
+
   double get valueUnitary => price / quantity;
 
   @override

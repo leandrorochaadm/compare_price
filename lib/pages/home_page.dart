@@ -127,7 +127,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ]),
                   ),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: 24),
                   FilledButton(
                     onPressed: () {
                       result = '';
@@ -154,8 +154,9 @@ class _HomePageState extends State<HomePage> {
                     visible: controller.isValid,
                     child: Text(
                       controller.productAdvantageous,
+                      textAlign: TextAlign.center,
                       style: const TextStyle(
-                        fontSize: 20,
+                        fontSize: 24,
                         fontWeight: FontWeight.bold,
                         color: Colors.green,
                       ),

@@ -23,4 +23,7 @@ class ProductModel extends Equatable {
 
   @override
   List<Object?> get props => [quantity, price];
+
+  @override
+  String toString() => ' quantity: $quantity price $price';
 }

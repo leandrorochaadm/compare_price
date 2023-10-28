@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
                     validator: Validatorless.multiple([
                       Validatorless.required('Campo obrigatório'),
                       Validatorless.numbersBetweenInterval(
-                        1,
+                        0,
                         1000000,
                         'Quantidade deve ser maior que zero',
                       ),
@@ -82,7 +82,7 @@ class _HomePageState extends State<HomePage> {
                     validator: Validatorless.multiple([
                       Validatorless.required('Campo obrigatório'),
                       Validatorless.numbersBetweenInterval(
-                        1,
+                        0,
                         1000000,
                         'Preço deve ser maior que zero',
                       ),
@@ -112,7 +112,7 @@ class _HomePageState extends State<HomePage> {
                     validator: Validatorless.multiple([
                       Validatorless.required('Campo obrigatório'),
                       Validatorless.numbersBetweenInterval(
-                        1,
+                        0,
                         1000000,
                         'Quantidade deve ser maior que zero',
                       ),
@@ -131,7 +131,7 @@ class _HomePageState extends State<HomePage> {
                     validator: Validatorless.multiple([
                       Validatorless.required('Campo obrigatório'),
                       Validatorless.numbersBetweenInterval(
-                        1,
+                        0,
                         1000000,
                         'Preço deve ser maior que zero',
                       ),

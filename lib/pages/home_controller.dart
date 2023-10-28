@@ -24,4 +24,9 @@ class HomeController {
       return 'O $product2Name é ${percentil.toStringAsFixed(1)}% mais barato que o $product1Name';
     }
   }
+
+  void clear() {
+    product1 = ProductModel.empty();
+    product2 = ProductModel.empty();
+  }
 }

@@ -19,7 +19,6 @@ class _HomePageState extends State<HomePage> {
   final teQuant1 = TextEditingController();
   final tePrice2 = TextEditingController();
   final teQuant2 = TextEditingController();
-  String result = '';
 
   @override
   Widget build(BuildContext context) {
@@ -128,27 +127,44 @@ class _HomePageState extends State<HomePage> {
                     ]),
                   ),
                   const SizedBox(height: 24),
-                  FilledButton(
-                    onPressed: () {
-                      result = '';
-                      final isValid = formKey.currentState?.validate() ?? false;
-                      if (isValid) {
-                        controller.product1 = ProductModel.fromString(
-                          quantity: teQuant1.text,
-                          price: tePrice1.text,
-                        );
-                        controller.product2 = ProductModel.fromString(
-                          quantity: teQuant2.text,
-                          price: tePrice2.text,
-                        );
-                        setState(() {});
-                      }
-                    },
-                    child: const Text(
-                      'COMPARAR',
-                      style: TextStyle(fontSize: 18),
-                    ),
-                  ),
+                  controller.isValid
+                      ? OutlinedButton(
+                          onPressed: () {
+                            controller.clear();
+
+                            tePrice1.clear();
+                            teQuant1.clear();
+                            tePrice2.clear();
+                            teQuant2.clear();
+
+                            setState(() {});
+                          },
+                          child: const Text(
+                            'Nova Comparação',
+                            style: TextStyle(fontSize: 18),
+                          ),
+                        )
+                      : FilledButton(
+                          onPressed: () {
+                            final isValid =
+                                formKey.currentState?.validate() ?? false;
+                            if (isValid) {
+                              controller.product1 = ProductModel.fromString(
+                                quantity: teQuant1.text,
+                                price: tePrice1.text,
+                              );
+                              controller.product2 = ProductModel.fromString(
+                                quantity: teQuant2.text,
+                                price: tePrice2.text,
+                              );
+                              setState(() {});
+                            }
+                          },
+                          child: const Text(
+                            'COMPARAR',
+                            style: TextStyle(fontSize: 18),
+                          ),
+                        ),
                   const SizedBox(height: 12),
                   Visibility(
                     visible: controller.isValid,

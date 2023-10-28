@@ -22,6 +22,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final primaryColor = Theme.of(context).primaryColor;
+
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -31,19 +33,21 @@ class _HomePageState extends State<HomePage> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  const Text(
+                  Text(
                     'Compare Preços',
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
+                      color: primaryColor,
                     ),
                   ),
                   const SizedBox(height: 12),
-                  const Text(
+                  Text(
                     'Produto 1',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
+                      color: primaryColor,
                     ),
                   ),
                   const SizedBox(height: 12),
@@ -54,6 +58,7 @@ class _HomePageState extends State<HomePage> {
                       labelText: 'Quantidade',
                       hintText: 'Digite a quantidade no produto 1',
                     ),
+                    readOnly: controller.isValid,
                     keyboardType: TextInputType.number,
                     validator: Validatorless.multiple([
                       Validatorless.required('Campo obrigatório'),
@@ -72,6 +77,7 @@ class _HomePageState extends State<HomePage> {
                       labelText: 'Preço',
                       hintText: 'Digite o preço no produto 1',
                     ),
+                    readOnly: controller.isValid,
                     keyboardType: TextInputType.number,
                     validator: Validatorless.multiple([
                       Validatorless.required('Campo obrigatório'),
@@ -83,11 +89,14 @@ class _HomePageState extends State<HomePage> {
                     ]),
                   ),
                   const SizedBox(height: 12),
-                  const Text(
+                  Divider(color: primaryColor),
+                  const SizedBox(height: 12),
+                  Text(
                     'Produto 2',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
+                      color: primaryColor,
                     ),
                   ),
                   const SizedBox(height: 12),
@@ -98,6 +107,7 @@ class _HomePageState extends State<HomePage> {
                       labelText: 'Quantidade',
                       hintText: 'Digite a quantidade no produto 2',
                     ),
+                    readOnly: controller.isValid,
                     keyboardType: TextInputType.number,
                     validator: Validatorless.multiple([
                       Validatorless.required('Campo obrigatório'),
@@ -116,6 +126,7 @@ class _HomePageState extends State<HomePage> {
                       labelText: 'Preço',
                       hintText: 'Digite o preço no produto 2',
                     ),
+                    readOnly: controller.isValid,
                     keyboardType: TextInputType.number,
                     validator: Validatorless.multiple([
                       Validatorless.required('Campo obrigatório'),

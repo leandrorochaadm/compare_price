@@ -10,9 +10,11 @@ class HomeController {
   bool get isValid => product1.isValid && product2.isValid;
 
   String get productAdvantageous {
-    if (!isValid) return '';
+    if (!isValid) return 'Dados inválidos';
 
-    if (product1.valueUnitary < product2.valueUnitary) {
+    if (product1.valueUnitary == product2.valueUnitary) {
+      return 'Ambos produto tem preços equivalentes';
+    } else if (product1.valueUnitary < product2.valueUnitary) {
       final proportion = product1.valueUnitary / product2.valueUnitary;
       final percentil = (1 - proportion) * 100;
       return 'O $product1Name é ${percentil.toStringAsFixed(1)}% mais barato que o $product2Name';
